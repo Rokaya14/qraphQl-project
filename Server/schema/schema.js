@@ -1,33 +1,33 @@
 
 const _=require("lodash")
-const {GraphQLObjectType , GraphQLString , GraphQLSchema} =require("graphql") ;
+const graphql =require("graphql") ;
  let books = [
-     {name: "Name of the wind", gener :"fantasy", id:"1"},
-     {name: "Harry poter", gener :"since fiction", id:"2"},
-     {name: "the long earth", gener :"Sci-fi",id:"3"}
+     {name: "Name of the wind", genre :"fantasy", id:"1"},
+     {name: "Harry poter", genre :"since fiction", id:"2"},
+     {name: "the long earth", genre :"Sci-fi",id:"3"}
  ]
 
-const BookType = new GraphQLObjectType({
+const BookType = new graphql.GraphQLObjectType({
     name:"Book",
     fields:()=>({
-        id:{type:GraphQLString},
-        name:{type:GraphQLString},
-        genre:{type:GraphQLString}
+        id:{type:graphql.GraphQLID},
+        name:{type:graphql.GraphQLString},
+        genre:{type:graphql.GraphQLString}
     })
 });
 
-const RootQuery = new GraphQLObjectType({
+const RootQuery = new graphql.GraphQLObjectType({
     name :'RootQueryType',
     fields:{
         book:{
             type:BookType,
-            args:{id:{type:GraphQLString}},
+            args:{id:{type:graphql.GraphQLID}},
            resolve(parent,args){
-            _.find(books,{id: args.id})
+            return _.find(books,{id: args.id})
            }
         }
     }
 })
-let schema = new GraphQLSchema({query: RootQuery})
+let schema = new graphql.GraphQLSchema({query: RootQuery})
 
-module.export = schema
+module.exports = schema
