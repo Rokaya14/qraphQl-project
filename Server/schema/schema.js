@@ -1,4 +1,6 @@
 const graphql = require("graphql");
+import Book from "../models/book";
+import Author from "../models/author"
 let books = [
   { name: "Name of the wind", genre: "fantasy", id: "1" ,authorid:"1"},
   { name: "the final empire", genre: "since fiction", id: "2" ,authorid:"2"},
