@@ -2,8 +2,7 @@ const schema = require("./schema/schema")
 const express = require("express");
 const {graphqlHTTP} = require('express-graphql'); // middle ware that allow express to understand graphql Api
 const app = express();
-
-
+// connect to mongo db 
 const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://rokaya14:@zz7895123@rokaya.9egfw.mongodb.net/graphQl?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
