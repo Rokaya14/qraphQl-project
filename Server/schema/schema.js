@@ -45,6 +45,7 @@ const AuthorType = new graphql.GraphQLObjectType({
 const RootQuery = new graphql.GraphQLObjectType({
   name: "RootQueryType",
   fields: {
+
     book: {
       type: BookType,
       args: { id: { type: graphql.GraphQLID } },
@@ -52,6 +53,7 @@ const RootQuery = new graphql.GraphQLObjectType({
         return books.find(book => book.id === args.id );
       },
     },
+
     author: {
       type: AuthorType,
       args: { id: { type: graphql.GraphQLID } },
@@ -59,6 +61,16 @@ const RootQuery = new graphql.GraphQLObjectType({
         return authors.find(author=>  author.id ===args.id );
       },
     },
+
+    books:{
+      type: graphql.GraphQLList(BookType),
+      resolve() { return books}
+    },
+
+    authors:{
+      type: graphql.GraphQLList(AuthorType),
+      resolve() { return authors}
+    }
   },
 });
 let schema = new graphql.GraphQLSchema({ query: RootQuery });
