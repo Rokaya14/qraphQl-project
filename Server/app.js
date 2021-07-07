@@ -1,22 +1,29 @@
-const schema = require("./schema/schema")
+const schema = require("./schema/schema");
 const express = require("express");
-const {graphqlHTTP} = require('express-graphql'); // middle ware that allow express to understand graphql Api
+const { graphqlHTTP } = require("express-graphql"); // middle ware that allow express to understand graphql Api
 const app = express();
-// connect to mongo db 
-const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://rokaya14:@zz7895123@rokaya.9egfw.mongodb.net/graphQl?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-  console.log("connected to d b");
-});
+const mongoose = require("mongoose");
 
-app.use('/graphql', graphqlHTTP({
+mongoose
+  .connect(
+    "mongodb+srv://rokaya141:@zz7895123@cluster0.d7nrh.mongodb.net/graphqlDB?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(() => {
+    app.listen(4000, () => {
+      console.log("Running a GraphQL API server at localhost:4000/graphql");
+    });
+  })
+  .catch((e) => {
+    console.log(e);
+  });
+app.use(
+  "/graphql",
+  graphqlHTTP({
     schema,
-    graphiql:true
-}))
-app.listen(4000, () => {
-  console.log("Running a GraphQL API server at localhost:4000/graphql"); 
-});
+    graphiql: true,
+  })
+);
