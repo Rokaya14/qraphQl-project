@@ -1,7 +1,11 @@
 const schema = require("./schema/schema");
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql"); // middle ware that allow express to understand graphql Api
-const app = express();
+let cors = require("cors")
+const app = express(); 
+
+app.use(cors());
+
 const mongoose = require("mongoose");
 
 mongoose
