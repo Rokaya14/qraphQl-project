@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { graphql,compose } from "@apollo/client/react/hoc";
-import {getAuthorsQuery ,addBookMutation} from '../Queries/queries'
+import { graphql } from "@apollo/client/react/hoc";
+import {getAuthorsQuery } from '../Queries/queries'
 const AddBook = (props) => {
    const [name,setName]= useState("")
    const [genre,setGenre]= useState("")
