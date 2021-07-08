@@ -1,6 +1,8 @@
 const graphql = require("graphql");
 const Book = require("../models/book");
 let Author = require("../models/author");
+
+// //dummy data 
 // let books = [
 //   { name: "Name of the wind", genre: "fantasy", id: "1", authorid: "1" },
 //   { name: "the final empire", genre: "since fiction", id: "2", authorid: "2" },
