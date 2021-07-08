@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 
 mongoose
   .connect(
-    "mongodb+srv://rokaya141:@zz7895123@cluster0.d7nrh.mongodb.net/graphqlDB?retryWrites=true&w=majority",
+    "mongodb+srv://rokaya141:@grqphql123@cluster0.d7nrh.mongodb.net/graphqlDB?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
